@@ -3,11 +3,11 @@ autoinstall:
   version: 1
   early-commands:
     # Stop ssh for packer as it thinks it timed out (workaround)
-    - sudo systemctl stop ssh    
+    - sudo systemctl stop ssh
     # Here could be commands helpful in troubleshooting
     - ip -c address show dynamic
 
-  # We could use 'interactive-sections' for debugging. 
+  # We could use 'interactive-sections' for debugging. - * means that all stages of Subiquity is interactive.
   # interactive-sections:
   #   - network
   #   - apt
@@ -37,30 +37,34 @@ autoinstall:
       - name:        ${guest_username}
         gecos:       ${guest_gecos}
         passwd:      ${guest_password_encrypted}
-        ssh_authorized_keys: ${guest_ssh_key}
+        ssh_authorized_keys: 
+          - ${guest_ssh_key}
         groups:      adm, cdrom, dip, lxd, plugdev, sudo
         shell:       /bin/bash
         lock-passwd: false
         sudo:        ALL=(ALL) NOPASSWD:ALL
   
-  # Parameter 'locale' alternatively could be 'en_US.UTF-8'
-  locale: en_US
-  
+  # Keyboard layout configuration
   keyboard:
     layout: us
   
+  # Locale configuration
+  locale: en_US
+  
+  # SSH configuration
+  # Reference: https://canonical-subiquity.readthedocs-hosted.com/en/latest/reference/autoinstall-reference.html#ssh
   ssh:
     install-server: true
     allow-pw: true
     ssh_quiet_keygen: true
-    authorized-keys:
-      - ${guest_ssh_key}
 
+  # Updating and upgrading packages during boot
   package_update: true
   package_upgrade: true
   
+  # Installing packages
   packages:
-    # Mandatory for Packer to connect with ssh provisioning later
+    # Mandatory for Packer to connect to Proxmox template VM for ssh provisioning stage
     - qemu-guest-agent
     # Other optional packages
     - tree
@@ -68,20 +72,22 @@ autoinstall:
     - btop
     - neofetch
   
+  # Storage configuration
+  # Reference: https://canonical-subiquity.readthedocs-hosted.com/en/latest/reference/autoinstall-reference.html#storage
   storage:
     layout:
       name: lvm
       sizing-policy: all
-    swap:
-      size: 0
 
-  late-commands:
-    # Pause the install just before finishing to allow manual inspection/modification.
-    # Unpause by creating the "/run/finish-late" file.
-    - while [ ! -f /run/finish-late ]; do sleep 1; done
-    - sudo lvm lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv
-    - sudo resize2fs -p /dev/mapper/ubuntu--vg-ubuntu--lv
-
+  # late-commands:
+  #   # You can pause the install just before finishing to allow manual inspection/modification.
+  #   # For manual inpection use Alt + F2 while in the console of Template VM on Proxmox.
+  #   # Unpause by creating the "/run/finish-late" file.
+  #   - while [ ! -f /run/finish-late ]; do sleep 1; done
+  
+  # This message is written to the cloud-init log (usually /var/log/cloud-init.log) as well as stderr (which usually redirects to /var/log/cloud-init-output.log).
+  # Upon exit, this module writes the system uptime, timestamp, and cloud-init version to /var/lib/cloud/instance/boot-finished independent of any user data specified for this module.
+  # Reference: https://cloudinit.readthedocs.io/en/latest/reference/modules.html#final-message
   final_message: |
     cloud-init has finished
     version: $version

@@ -129,7 +129,7 @@ source "proxmox-iso" "ubuntu" {
   # SSH Settings
   # Reference: https://developer.hashicorp.com/packer/docs/communicators/ssh
   communicator = "ssh"
-  # Instead of username and password here we could uuse ssh_private_key_file = "~/.ssh/id_rsa"
+  # Instead of username and password here we could use ssh_private_key_file = "~/.ssh/id_rsa"
   ssh_username = var.guest_username
   ssh_password = var.guest_password
   # How long Packer will wait for ssh connection to be established.
@@ -146,13 +146,6 @@ build {
       "while [ ! -f /var/lib/cloud/instance/boot-finished ]; do echo 'Waiting for cloud-init...'; sleep 1; done"
     ]
   }
-
-  # Popular build fix: https://github.com/hashicorp/packer/issues/2639
-  provisioner "shell" {
-    inline = [
-      "cloud-init status --wait",
-    ]
-  }
   
   # Using breakpoint provisioner. Uncomment next lines for debugging.
   # provisioner "breakpoint" {
@@ -166,8 +159,7 @@ build {
     execute_command = "echo '${var.guest_password}' | sudo -S env {{ .Vars }} {{ .Path }}"
     scripts = [
       "./scripts/cleanup.sh",
-      "./scripts/create_reconfigure-openssh-server.service.sh",
-      #"./scripts/enable-proxmox-cloud-init.sh"
+      "./scripts/create_reconfigure-openssh-server.service.sh"
     ]
   }
 }

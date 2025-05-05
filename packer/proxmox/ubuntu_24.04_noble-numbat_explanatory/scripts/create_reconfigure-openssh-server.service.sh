@@ -17,8 +17,8 @@ tee /usr/local/bin/regenerate-openssh-host-keys.sh <<EOL
 echo "Oneshot script started at $(date)" > /var/log/regenerate-openssh-host-keys.log
 echo "Reconfiguring openssh-server to regenerate host keys" >> /var/log/regenerate-openssh-host-keys.log
 echo "Runnig 'dpkg-reconfigure openssh-server'" >> /var/log/regenerate-openssh-host-keys.log
-if [ test -f /etc/ssh/ssh_host_dsa_key ]; then
-    dpkg-reconfigure openssh-server >> /var/log/regenerate-openssh-host-keys.log
+if [ ! -f /etc/ssh/ssh_host_dsa_key ]; then
+  dpkg-reconfigure openssh-server >> /var/log/regenerate-openssh-host-keys.log
 fi
 exit 0
 EOL
