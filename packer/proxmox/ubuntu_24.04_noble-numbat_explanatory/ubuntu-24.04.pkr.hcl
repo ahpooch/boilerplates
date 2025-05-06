@@ -2,7 +2,7 @@
 # Author: ahpooch
 # Produced with materials from https://cloudmaniac.net and various sources.
 
-# Variable devinitions moved to './variables.pkr.hcl' file.
+# Variable definitions moved to './variables.pkr.hcl' file.
 # Variables values should be set in './ubuntu-24.04.auto.pkrvars.hcl' and './credentials.auto.pkrvars.hcl' files.
 # File 'credentials.auto.pkrvars.hcl.template' should be populated with correct values and renamed to 'credentials.auto.pkrvars.hcl'.
 
@@ -86,9 +86,9 @@ source "proxmox-iso" "ubuntu" {
   # Packer has some flaws ralating boot_command when you running packer on windows.                                                                #
   # Variable {{ .HTTPIP }} in boot_command may be calculated wrong and prevent Packer from providing it's right IP to the VM.                      #
   # By default Packer chose first non-loop network interface on system and sometimes the resulting IP in {{ .HTTPIP }} leads autoinstall to fail.  #
-  # It often caused by presense of some additional adapter like vEthernet (used by WSL or Hyper-V) or some VPN clients installed on system.        #
+  # It often caused by presence of some additional adapter like vEthernet (used by WSL or Hyper-V) or some VPN clients installed on system.        #
   # You could read more here: https://github.com/hashicorp/packer/issues/10168                                                                     #
-  # To eleminate this issue you could use http_interface parameter in configuration like this: http_interface = "Ethernet".                        #
+  # To eliminate this issue you could use http_interface parameter in configuration like this: http_interface = "Ethernet".                        #
   ##################################################################################################################################################
   http_interface          = "Ethernet"
   # You could set desired port range that Packer will be using to run its http service.

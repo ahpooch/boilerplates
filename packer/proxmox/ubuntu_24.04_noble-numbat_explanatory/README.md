@@ -52,12 +52,12 @@ Proxmox Packer builder already added to `required_plugins` block, so just run `p
 ## Packer configuration validation
 Before running Packer you should probably validate configuration first.
 ```shell
-# Make shure you executed `cd <folder with desired Tempalate>`
+# Make sure you executed `cd <folder with desired Template>`
 packer validate .
 ```
 Then you can build your Template
 ```shell
-# Make shure you executed `cd <folder with desired Tempalate>`
+# Make sure you executed `cd <folder with desired Template>`
 packer build .
 ```
 
@@ -77,7 +77,7 @@ packer build -debug ...
 
 ### Using -on-error=ask
 If your packer build is unstable you should use -on-error=ask,
-so that packer not destroy VM on Proxmox rightaway and you could work on it to elaborate current problem.
+so that packer not destroy VM on Proxmox right away and you could work on it to elaborate current problem.
 ```Powershell
 packer build -on-error=ask
 ```
@@ -100,7 +100,7 @@ provisioner "breakpoint" {
 # How to investigate VM on Proxmox in the build process
 if installation of Ubuntu image unexpectedly stuck at any time you could do so:
 press Alt+F2 to get a working console.
-- Read `/var/log/installer/subiquity-*.log files to get the network configuration correct.
+- Read `/var/log/installer/subiquity-*.log` files to get the network configuration correct.
 - Read `/var/log/syslog` to debug the YAML parsing issues around the late-commands.
 Source: https://nickcharlton.net/posts/automating-ubuntu-2004-installs-with-packer.html
 
@@ -125,6 +125,6 @@ tar -xvzf /home/server_name/cloud-init.tar.gz
 ### Example: Invalid user <user> from <ip> port <port>
 ### pam_unix(sshd:auth): check pass; user unknown
 # In this case the reason is wrong password when Packer attempt to connect to VM.
-# Work with virables in Packer.
+# Work with variables in Packer.
 systemctl status sshd
 ```

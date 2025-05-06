@@ -4,7 +4,7 @@
 ### Reference for iso_checksum: https://developer.hashicorp.com/packer/integrations/hashicorp/proxmox/latest/components/builder/clone#required
 os_name                     = "Ubuntu 24.04.02 LTS (Noble Numbat)"
 iso_url                     = "https://releases.ubuntu.com/noble/ubuntu-24.04.2-live-server-amd64.iso"
-### iso_ckecksum will be retrieved from the intenet page
+### iso_ckecksum will be retrieved from the internet page
 iso_checksum                = "file:https://releases.ubuntu.com/24.04/SHA256SUMS"
 
 # Proxmox settings

@@ -31,5 +31,5 @@ rm -f /etc/cloud/cloud.cfg.d/*kernel_cmdline_url.cfg
 # Resetting hostname
 truncate -s0 /etc/hostname
 
-# Cleaninig history
+# Cleaning history
 history -c && history -w

@@ -81,7 +81,7 @@ autoinstall:
 
   # late-commands:
   #   # You can pause the install just before finishing to allow manual inspection/modification.
-  #   # For manual inpection use Alt + F2 while in the console of Template VM on Proxmox.
+  #   # For manual inspection use Alt + F2 while in the console of Template VM on Proxmox.
   #   # Unpause by creating the "/run/finish-late" file.
   #   - while [ ! -f /run/finish-late ]; do sleep 1; done
   

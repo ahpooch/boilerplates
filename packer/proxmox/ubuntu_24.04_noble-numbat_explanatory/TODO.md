@@ -1,3 +1,3 @@
-- [x] First successfull build.
+- [x] First successful build.
 - [x] Replace hardcoded things with variables
 - [x] Second variation of configuration with private/public keys instead of/accompanied to password.
