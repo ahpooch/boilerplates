@@ -7,10 +7,10 @@ This template is designed to run from Windows host, but surely could be easily c
 This particular template is thoroughly commented for a learning purpose and sharing knowledge.
 
 # Last successfuly run on
-Date: 05.05.2025
-Proxmox VE: 8.4.1
-Packer host's operating system: Windows 11 24H2 (26100.3775)
-Packer Version: v1.12.0
+Date: 05.05.2025  
+Proxmox VE: 8.4.1  
+Packer host's operating system: Windows 11 24H2 (26100.3775)  
+Packer Version: v1.12.0  
 Packer Proxmox Plugin: packer-plugin-proxmox_v1.2.2_x5.0_windows_amd64.exe
 
 # Before working with this project
