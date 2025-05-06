@@ -1,3 +1,5 @@
+<p align="center"><img src="https://raw.githubusercontent.com/ahpooch/boilerplates/main/packer/proxmox/Ubuntu24.04_Noble_Numbat.png" />
+
 # Description
 This is a Packer build template that creates Ubuntu 24.04 LTS (Noble Numbat) VM Template on Proxmox.
 This template is designed to run from Windows host, but surely could be easily changed to be run from linux.
