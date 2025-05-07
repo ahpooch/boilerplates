@@ -6,5 +6,5 @@
 <img align="left" src="/icons/Ubuntu.png" width="60" height="60">
 </div>
 Here you can find fully working Packer Template for creating Ubuntu 24.04 LTS template vm on Proxmox.
-This template has explanatory comments. It is meant to run with pucker installed on Windows.
+This template has explanatory comments. It is meant to run with Packer installed on Windows.
 https://github.com/ahpooch/boilerplates/tree/main/packer/proxmox/ubuntu_24.04_noble-numbat_explanatory
