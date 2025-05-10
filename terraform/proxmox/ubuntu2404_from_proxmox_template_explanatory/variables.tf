@@ -11,7 +11,7 @@ variable "virtual_environment_password" {
   type = string
 }
 variable "proxmox_node_name" {
-  description = "Promox Node Name"
+  description = "Proxmox Node Name"
   type = string
   default = "pve"
 }
