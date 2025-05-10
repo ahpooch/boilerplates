@@ -1,0 +1,5 @@
+credentials.auto.tfvars
+.terraform/providers/**
+.terraform.lock.hcl
+terraform.tfstate
+terraform.tfstate.backup
