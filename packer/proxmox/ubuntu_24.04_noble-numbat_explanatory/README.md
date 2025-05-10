@@ -6,7 +6,7 @@ This template is designed to run from Windows host, but surely could be easily c
 
 This particular template is thoroughly commented for a learning purpose and sharing knowledge.
 
-# Last successfuly run on
+# Last successfully run on
 Date: 05.05.2025  
 Proxmox VE: 8.4.1  
 Packer host's operating system: Windows 11 24H2 (26100.3775)  
