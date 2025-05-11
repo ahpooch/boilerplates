@@ -5,7 +5,7 @@ terraform {
         version = "0.77.1"
     }
   }
-  required_version = ">= 1.11.4"
+  required_version = ">= 1.11.2"
 }
 provider "proxmox" {
   endpoint = var.virtual_environment_endpoint
