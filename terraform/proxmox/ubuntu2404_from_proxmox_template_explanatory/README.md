@@ -18,23 +18,8 @@ Proxmox Template VM (vm_id = 9000) already [provisioned with Packer](https://git
 ## Terraform Installation on Windows
 Download terraform.exe from https://developer.hashicorp.com/terraform/install
 Move terraform.exe to one of directories in $env:PATH.
-Or you could place it in `C:\Program Files\Tools\` and use this powershell script:
-```Powershell
-# Adding $NewPath to $env:PATH for both User and Machine scopes. 
-$NewPath = "C:\Program Files\Tools"
-ForEach ($Scope in "Machine","User") {
-    $PathVariableValue = [System.Environment]::GetEnvironmentVariable('PATH', $Scope)
-    $CurrentPaths = $PathVariableValue.split(";") | Where-Object {![string]::IsNullOrEmpty($_)}
-    if ($CurrentPaths -contains $NewPath) {
-        Write-Host "`"$NewPath`" already in `$env:PATH $Scope scope" -ForegroundColor Yellow
-    } else {
-        $NewPathVariableValue = $CurrentPaths + $NewPath | Sort-Object -join ";"
-        [System.Environment]::SetEnvironmentVariable('PATH',$NewPathVariableValue, $Scope)
-        Write-Host "`"$NewPath`" added to `$env:PATH $Scope scope" -ForegroundColor Green
-    }
-}
-```
-Script source: https://gist.github.com/ahpooch/88cbfc4740feaccc6d28ea99bf325d5c
+Or you could place it in `C:\Program Files\Tools\` and add `C:\Program Files\Tools` to User and Machine Paths.
+
 ## Initialize Terraform (provider plugin installation)
 Make sure you set current directory to terraform project folder, then run
 `terraform init`
