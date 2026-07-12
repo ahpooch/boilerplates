@@ -1,4 +1,4 @@
-<p align="center"><img src="https://raw.githubusercontent.com/ahpooch/boilerplates/main/packer/proxmox/ubuntu_24.04_noble-numbat_explanatory/Ubuntu24.04_Noble_Numbat.png" />
+<p align="center"><img src="https://raw.githubusercontent.com/ahpooch/boilerplates/main/packer/proxmox/ubuntu_26.04_resolute-raccoon\Ubuntu26.04_Resolute_Raccoon.png" />
 
 # Description
 This is a Packer build template that creates Ubuntu 26.04 LTS (Resolute Raccoon) VM Template on Proxmox.
