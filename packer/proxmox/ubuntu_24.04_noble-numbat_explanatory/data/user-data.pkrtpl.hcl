@@ -70,7 +70,7 @@ autoinstall:
     - tree
     - iftop
     - btop
-    - neofetch
+    - fastfetch
   
   # Storage configuration
   # Reference: https://canonical-subiquity.readthedocs-hosted.com/en/latest/reference/autoinstall-reference.html#storage

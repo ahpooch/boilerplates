@@ -80,6 +80,8 @@ If your packer build is unstable you should use -on-error=ask,
 so that packer not destroy VM on Proxmox right away and you could work on it to elaborate current problem.
 ```Powershell
 packer build -on-error=ask
+# or combined with -debug
+packer build -debug -on-error=ask .
 ```
 
 ### Set PACKER_LOG to 1
@@ -128,3 +130,8 @@ tar -xvzf /home/server_name/cloud-init.tar.gz
 # Work with variables in Packer.
 systemctl status sshd
 ```
+
+# If Packer throw `Failed to determine host IP: route ip+net: no such network interface`
+Check `ubuntu-24.04.pkr.hcl` file. It provides detailed fix for Packer .HTTPIP Issue.
+Use `Get-NetAdapter | ft -AutoSize` to find the correct name of network adapter you should use
+in `http_interface` directive in `ubuntu-24.04.pkr.hcl`.
